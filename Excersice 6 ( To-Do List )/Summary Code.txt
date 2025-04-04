@@ -1,0 +1,59 @@
+How the Code Works?
+1. HTML Structure:
+Input Fields → Two text inputs for entering the task and author.
+
+Add Task Button → Saves or updates the task in localStorage.
+
+Table → Displays tasks dynamically with Edit and Delete buttons.
+
+2. JavaScript Functions:
+1️⃣ Save_Details() (Add & Update Task)
+
+Takes values from the input fields (TaskVAlue & AuthorName).
+
+Checks if user is editing → If yes, updates the existing task.
+
+If adding a new task, it stores it in localStorage as an array.
+
+Clears input fields after saving.
+
+Calls displayTasks() to update the table.
+
+2️⃣ displayTasks() (Display Stored Tasks)
+
+Retrieves stored tasks from localStorage.
+
+Clears the table first to avoid duplication.
+
+Loops through each task and adds rows dynamically to the table.
+
+Each row contains Task Name, Author Name, Edit & Delete Buttons.
+
+3️⃣ editTask(index) (Edit Existing Task)
+
+Fetches the task based on the index.
+
+Fills the input fields with the selected task data.
+
+Stores the index in a hidden dataset (to update instead of adding a new task).
+
+4️⃣ deleteTask(index) (Delete Task)
+
+Removes the task from the tasks array in localStorage.
+
+Calls displayTasks() to refresh the table.
+
+5️⃣ window.onload = displayTasks;
+
+Ensures tasks are loaded when the page is refreshed.
+
+
+
+Why Do We Use JSON.parse() and JSON.stringify()?
+When working with localStorage, we store and retrieve data as strings. However, in JavaScript, we often need to store objects or arrays.
+
+To handle this, we use:
+
+JSON.stringify() → Converts objects/arrays into a string before saving in localStorage.
+
+JSON.parse() → Converts the string back into an object/array when retrieving from localStorage.
