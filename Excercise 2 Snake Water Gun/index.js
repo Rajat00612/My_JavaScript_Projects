@@ -3,26 +3,9 @@ let UserPoints = 0;
 let ComputerPoints = 0;
 let round = 0;
 let AgainPlay = false;
-startGame=async()=>{
-    let confirmation = confirm("🎮 Ready to Play Snake 🐍, Water 💧, Gun 🔫?\n\nClick OK to start the game or Cancel to exit.")
-    if(confirmation==true){
-    for(round = 1 ;round<11;round++){
-        let UserChoice = prompt("🎮 Let's Play Snake 🐍 Water 💧 Gun 🔫!\n\nPlease enter your choice:");
-        let options = ["snake","water","gun"]
-        let randomSelection = Math.round(Math.random()*2)
-        let ComputerChoice = options[randomSelection]
-        console.log(ComputerChoice)
-        CheckOptions(ComputerChoice,UserChoice)
-   
-    }
 
-        }
-          await FinalResult(UserPoints,ComputerPoints)
-    }
-   
 
-    
-const CheckOptions =(ComputerChoice,UserChoice)=>{
+const CheckOptions = (ComputerChoice,UserChoice)=>{
  
     if(UserChoice=="snake"&&ComputerChoice=="water"){
         UserPoints++ , 
@@ -47,8 +30,34 @@ else if(UserChoice=="gun"&&ComputerChoice=="snake"){
          else if(UserChoice==ComputerChoice){
             alert(`🤝 Round ${round} - It's a Tie!\n📊 Scorecard → 👤 User: ${UserPoints} 🤖 Computer: ${ComputerPoints}`)
         }
+      
+        }
+   startGame=async()=>{
+    let confirmation = confirm("🎮 Ready to Play Snake 🐍, Water 💧, Gun 🔫?\n\nClick OK to start the game or Cancel to exit.")
+    if(confirmation==true){
+    for(round = 1 ;round<11;round++){
+        let UserChoice = prompt("🎮 Let's Play Snake 🐍 Water 💧 Gun 🔫!\n\nPlease enter your choice:");
+        let options = ["snake","water","gun"]
+        let randomSelection = Math.round(Math.random()*2)
+        let ComputerChoice = options[randomSelection]
+        console.log(ComputerChoice)
+        CheckOptions(ComputerChoice,UserChoice)
+    }
+  
+        }
+    
+            await FinalResult(UserPoints,ComputerPoints)
+           
+        }
+       
+         
         
-}
+    
+
+    
+
+        
+
 
 
 const FinalResult = (UserPoints,ComputerPoints)=>{
