@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Alarm Clock</title>
+<link rel="stylesheet" href="Main.css">
+</head>
+<body>
+  <h1>Welcome to Alarm Clock</h1>
+  <div>
+    <label>⏱ Set Timer (in seconds): </label>
+    <input type="number" id="TimeBox11" placeholder="Enter seconds" />
+    <br /><br />
+    <label>🔊 Select Alarm Sound: </label>
+    <select id="SoundBook"></select>
+    <br /><br />
+    <button onclick="TimeBook()">Set Alarm</button>
+    <button onclick="ClearAlarm()">Clear Alarm</button>
+  </div>
+
+  <h3>🕰 Current Time: <span id="current-time"></span></h3>
+  <h2 id="countdown">00:00</h2>
+
+ <script src="index.js"></script> 
+</body>
+</html>
