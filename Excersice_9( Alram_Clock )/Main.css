@@ -1,88 +1,129 @@
+/* style.css for Advanced Alarm Clock */
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #83a4d4, #b6fbff);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
+  font-family: 'Arial', sans-serif;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(270deg, #667eea, #764ba2, #ff6e7f, #bfe9ff);
+  background-size: 800% 800%;
+  animation: gradientMove 15s ease infinite;
+  color: white;
+  overflow: hidden;
+}
 
-  .alarm-container {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    text-align: center;
-    width: 90%;
-    max-width: 400px;
-  }
-  @keyframes shake {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(15deg); }
-    50% { transform: rotate(-15deg); }
-    75% { transform: rotate(15deg); }
-    100% { transform: rotate(0deg); }
-  }
-  
-  .shake {
-    display: inline-block;
-    font-size: 3em;
-    animation: shake 0.5s infinite;
-  }
-  h1 {
-    margin-bottom: 20px;
-    color: #333;
-  }
+.outer-frame {
+  border: 8px solid white;
+  border-radius: 25px;
+  padding: 40px;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+  animation: borderGlow 5s infinite;
+  background: rgba(0, 0, 0, 0.3);
+}
 
-  label {
-    font-weight: bold;
-    margin-top: 10px;
-    display: block;
-    text-align: left;
-  }
+@keyframes borderGlow {
+  0% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+  50% { box-shadow: 0 0 40px rgba(255, 255, 255, 1); }
+  100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+}
 
-  input, select, button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 16px;
-  }
+.container {
+  text-align: center;
+}
 
-  button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-  button:hover {
-    background-color: #218838;
-  }
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease-in-out;
+}
 
-  #countdown {
-    font-size: 2em;
-    color: #dc3545;
-    font-weight: bold;
-    margin-top: 20px;
-  }
-  #countdown {
-    font-size: 2rem;
-    margin-top: 10px;
-  }
-  .shake {
-    animation: shake 0.5s infinite;
-  }
-  @keyframes shake {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(10deg); }
-    50% { transform: rotate(-10deg); }
-    75% { transform: rotate(10deg); }
-    100% { transform: rotate(0deg); }
-  }
+.clock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  padding: 20px 40px;
+ 
+  border-radius: 50px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 30px;
+  animation: pulse 2s infinite;
+  transition: all 0.5s ease-in-out;
+  min-width: 300px;
+  min-height: 100px;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 20px rgba(255,255,255,0.5); }
+  50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(255,255,255,1); }
+  100% { transform: scale(1); box-shadow: 0 0 20px rgba(255,255,255,0.5); }
+}
+
+@keyframes ringAnimation {
+  0% { transform: rotate(0deg) scale(1); border-color: #ff5e57; }
+  25% { transform: rotate(1deg) scale(1.05); border-color: #ffe600; }
+  50% { transform: rotate(-1deg) scale(1.1); border-color: #ff5e57; }
+  75% { transform: rotate(1deg) scale(1.05); border-color: #ffe600; }
+  100% { transform: rotate(0deg) scale(1); border-color: #ff5e57; }
+}
+
+.ringing {
+  animation: ringAnimation 0.5s infinite, pulse 1s infinite;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-style: solid;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  animation: fadeIn 3s ease-in-out;
+}
+
+input[type="time"], select {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="time"]:focus, select:focus {
+  outline: none;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+}
+
+button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  background-color: #ff5e57;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #ff3b30;
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
