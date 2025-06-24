@@ -1,26 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Alarm Clock</title>
-<link rel="stylesheet" href="Main.css">
+  <meta charset="UTF-8">
+  <title>Advanced Alarm Clock</title>
+  <link rel="stylesheet" href="Main.css">
 </head>
 <body>
-  <h1>Welcome to Alarm Clock</h1>
-  <div>
-    <label>⏱ Set Timer (in seconds): </label>
-    <input type="number" id="TimeBox11" placeholder="Enter seconds" />
-    <br /><br />
-    <label>🔊 Select Alarm Sound: </label>
-    <select id="SoundBook"></select>
-    <br /><br />
-    <button onclick="TimeBook()">Set Alarm</button>
-    <button onclick="ClearAlarm()">Clear Alarm</button>
+
+  <div class="outer-frame">
+    <div class="container">
+      <h1>⏰ Advanced Alarm Clock</h1>
+
+      <div id="current-time" class="clock">00:00:00</div>
+
+      <div class="controls">
+        <input type="time" id="alarm-time" />
+
+        <select id="sound-selector">
+          <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">Morning Vibes</option>
+          <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">Digital Beep Alarm</option>
+          <option value="https://www.fesliyanstudios.com/play-mp3/4349">J.A.R.V.I.S Wakeup</option>
+          <option value="https://www.fesliyanstudios.com/play-mp3/397">Classic Rooster</option>
+        </select>
+
+        <button onclick="previewSound()">🔊 Preview Sound</button>
+        <button onclick="setAlarm()">Set Alarm</button>
+        <button onclick="clearAlarm()">Clear Alarm</button>
+        <button onclick="snoozeAlarm()">💤 Snooze 5 min</button>
+      </div>
+    </div>
   </div>
 
-  <h3>🕰 Current Time: <span id="current-time"></span></h3>
-  <h2 id="countdown">00:00</h2>
-
- <script src="index.js"></script> 
+  <script src="index.js"></script>
 </body>
 </html>
